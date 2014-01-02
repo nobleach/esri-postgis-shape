@@ -1,0 +1,15 @@
+{
+  "name": "utilisync-devserver",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "express": "3.4.7",
+    "pg": "~2.10.0",
+    "terraformer": "~1.0.1",
+    "terraformer-arcgis-parser": "~1.0.1",
+    "geojson2shape": "~0.2.4"
+  }
+}
