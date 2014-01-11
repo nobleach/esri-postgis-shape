@@ -38,6 +38,7 @@ var allowCrossDomain = function(req, res, next) {
 // all environments
 app.set('port', process.env.PORT || 3000);
 app.use(allowCrossDomain);
+app.use(express.bodyParser());
 app.use(express.favicon());
 app.use(express.logger('dev'));
 app.use(express.json());
@@ -54,9 +55,13 @@ if ('development' == app.get('env')) {
 var sketch = require('./routes/sketch');
 sketch.inject(client);
 
+var photo = require('./routes/photo');
+sketch.inject(client);
+
 app.post('/sketch/save', sketch.save);
 app.get('/sketch/:id', sketch.find);
 app.get('/sketch/download/:id', sketch.download);
+app.post('/upload', photo.upload);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
